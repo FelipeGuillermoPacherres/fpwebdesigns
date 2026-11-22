@@ -1,0 +1,314 @@
+$fp-header-height: 100px;
+$fp-header-mobile-height: 84px;
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: $fp-header-height + 24px;
+}
+
+.fp-header {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    background-color: $fp-graphite;
+    border-bottom: 1px solid rgba($fp-titanium, 0.15);
+
+    &__nav {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        align-items: center;
+        gap: 2rem;
+        width: 100%;
+        min-height: $fp-header-height;
+        padding-inline: 3rem;
+    }
+
+    &__brand {
+        justify-self: start;
+        display: inline-flex;
+        align-items: center;
+
+        img {
+            display: block;
+            width: 132px;
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    &__links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(1.5rem, 3vw, 3rem);
+
+        a {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            padding-block: 0.5rem;
+            color: $fp-white;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 0.2s ease;
+
+            &::after {
+                content: "";
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                height: 1px;
+                background-color: $fp-cyan;
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform 0.2s ease;
+            }
+
+            &:hover,
+            &:focus-visible {
+                color: $fp-cyan;
+
+                &::after {
+                    transform: scaleX(1);
+                }
+            }
+        }
+    }
+
+    &__contact {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.65rem;
+        min-height: 48px;
+        padding: 0.8rem 1.25rem;
+        overflow: hidden;
+        border: 1px solid $fp-cyan;
+        background-color: transparent;
+        color: $fp-white;
+        font-size: 0.95rem;
+        font-weight: 500;
+        text-decoration: none;
+        white-space: nowrap;
+        transition:
+            color 0.2s ease,
+            background-color 0.2s ease,
+            box-shadow 0.2s ease;
+
+        i {
+            color: $fp-cyan;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: -35%;
+            bottom: -35%;
+            left: -60%;
+            width: 35%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba($fp-cyan, 0.35),
+                transparent
+            );
+            transform: skewX(-20deg);
+            pointer-events: none;
+        }
+
+        &:hover,
+        &:focus-visible {
+            background-color: rgba($fp-cyan, 0.06);
+            color: $fp-white;
+            box-shadow: 0 0 18px rgba($fp-cyan, 0.12);
+
+            &::after {
+                left: 135%;
+                transition: left 0.65s ease;
+            }
+        }
+    }
+
+    &__desktop-contact {
+        justify-self: end;
+    }
+
+    &__toggle {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border: 1px solid rgba($fp-cyan, 0.4);
+        background-color: transparent;
+        color: $fp-cyan;
+        font-size: 1.25rem;
+        cursor: pointer;
+    }
+}
+
+.fp-mobile-navigation {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+
+    &__backdrop {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(black, 0.65);
+        animation: fp-backdrop-in 0.2s ease both;
+    }
+
+    &__drawer {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        width: min(85vw, 360px);
+        padding: 1.25rem 1.5rem;
+        padding-top: max(1.25rem, env(safe-area-inset-top));
+        padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+        overflow-y: auto;
+        border-left: 1px solid rgba($fp-cyan, 0.4);
+        background-color: $fp-steel;
+        box-shadow: -20px 0 50px rgba(black, 0.35);
+        animation: fp-drawer-in 0.28s ease both;
+    }
+
+    &__heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 2rem;
+
+        > span {
+            color: $fp-titanium;
+            font-family: monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+        }
+    }
+
+    &__close {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border: 0;
+        background-color: transparent;
+        color: $fp-cyan;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    &__links {
+        display: flex;
+        flex-direction: column;
+
+        > a:not(.fp-header__contact) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding-block: 1.25rem;
+            border-bottom: 1px solid rgba($fp-titanium, 0.15);
+            color: $fp-white;
+            font-size: 1.2rem;
+            text-decoration: none;
+
+            span {
+                color: $fp-cyan;
+            }
+
+            &:hover,
+            &:focus-visible {
+                color: $fp-cyan;
+            }
+        }
+
+        > .fp-header__contact {
+            margin-top: 2rem;
+        }
+    }
+}
+
+.fp-header a:focus-visible,
+.fp-header button:focus-visible,
+.fp-mobile-navigation a:focus-visible,
+.fp-mobile-navigation button:focus-visible {
+    outline: 2px solid $fp-cyan;
+    outline-offset: 5px;
+}
+
+@keyframes fp-drawer-in {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fp-backdrop-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@include media-breakpoint-down(lg) {
+    html {
+        scroll-padding-top: $fp-header-mobile-height + 20px;
+    }
+
+    .fp-header {
+        &__nav {
+            grid-template-columns: minmax(0, 1fr) auto;
+            min-height: $fp-header-mobile-height;
+            padding-inline: 1.5rem;
+        }
+
+        &__brand img {
+            width: 115px;
+        }
+
+        &__links,
+        &__desktop-contact {
+            display: none;
+        }
+
+        &__toggle {
+            display: inline-flex;
+            justify-self: end;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .fp-header *,
+    .fp-header *::after,
+    .fp-mobile-navigation * {
+        animation: none !important;
+        transition: none !important;
+    }
+}

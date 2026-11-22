@@ -1,26 +1,15 @@
 @import "bootstrap/scss/functions";
-
-$fp-graphite: #0B0F14;
-$fp-steel: #19222D;
-$fp-titanium: #A7B4C2;
-$fp-white: #F2F7FC;
-$fp-cyan: #00C8F8;
-
-$primary: $fp-cyan;
-$body-bg: $fp-graphite;
-$body-color: $fp-white;
-$font-family-sans-serif: "Instrument Sans", sans-serif;
-
+@import "variables.scss";
 @import "bootstrap/scss/bootstrap";
 
-.fp-welcome {
-    min-height: 100dvh;
+@import "custom.scss";
+@import "header.scss";
+@import "footer.scss";
+@import "index.scss";
+@import "select_lang.scss";
 
-    h1 span {
-        color: $fp-cyan;
-    }
-
-    p {
-        color: $fp-titanium;
-    }
+#header {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
 }
