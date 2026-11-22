@@ -171,7 +171,11 @@ export default function Header({ url = '', lang = 'es' }) {
                         aria-label={text.navigation}
                     >
                         <div className="fp-mobile-navigation__heading">
-                            <span>{text.explore}</span>
+                            <img
+                                className="fp-header__drawer-logo"
+                                src={logo}
+                                alt="FP Web Designs"
+                            />
 
                             <button
                                 ref={closeButtonRef}
@@ -208,7 +212,7 @@ export default function Header({ url = '', lang = 'es' }) {
                                 onClick={closeMenu}
                             >
                                 {text.contact}
-                                <span aria-hidden="true">↗</span>
+                                <i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true" />
                             </a>
                         </nav>
                     </div>

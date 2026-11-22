@@ -288,6 +288,12 @@ html {
             width: 115px;
         }
 
+        &__drawer-logo {
+            display: block;
+            width: 90px;
+            height: auto;
+        }
+
         &__links,
         &__desktop-contact {
             display: none;
