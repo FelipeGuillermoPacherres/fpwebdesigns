@@ -1,11 +1,13 @@
-//-HeroFrame.jsx-///
+// HeroFrame
+
 .fp-hero {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     min-height: calc(100svh - #{$fp-header-height});
-    background-color: $fp-graphite;
     border-bottom: 1px solid rgba($fp-cyan, 0.3);
+    background-color: $fp-graphite;
 
+    // Contenido
     &__content {
         position: relative;
         z-index: 1;
@@ -13,8 +15,11 @@
         flex-direction: column;
         justify-content: center;
         min-width: 0;
-        padding: clamp(3rem, 6vw, 7rem) 1.5rem
-        clamp(2.5rem, 5vw, 5rem) 3rem;
+        padding:
+            clamp(3rem, 6vw, 7rem)
+            1.5rem
+            clamp(2.5rem, 5vw, 5rem)
+            3rem;
     }
 
     &__eyebrow {
@@ -51,29 +56,34 @@
         line-height: 1.7;
     }
 
+    // Acciones
     &__actions {
         display: flex;
-        align-items: center;
         flex-wrap: wrap;
+        align-items: center;
         gap: 1.25rem 1.5rem;
         margin-top: 2rem;
     }
 
-    &__button {
-        position: relative;
+    &__button,
+    &__contact {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         gap: 0.75rem;
         min-height: 50px;
+        font-size: 0.95rem;
+        text-decoration: none;
+    }
+
+    &__button {
+        position: relative;
         padding: 1rem 1.25rem;
         overflow: hidden;
         border: 1px solid $fp-cyan;
         background-color: $fp-cyan;
         color: $fp-graphite;
-        font-size: 0.95rem;
         font-weight: 600;
-        text-decoration: none;
         transition: box-shadow 0.2s ease;
 
         &::after {
@@ -106,16 +116,9 @@
     }
 
     &__contact {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.75rem;
-        min-height: 50px;
         padding-block: 0.75rem;
         border-bottom: 1px solid rgba($fp-cyan, 0.7);
         color: $fp-white;
-        font-size: 0.95rem;
-        text-decoration: none;
         transition: color 0.2s ease;
 
         i {
@@ -137,10 +140,12 @@
         font-size: 0.8rem;
     }
 
+    // Fotografía y fade
     &__visual {
         position: relative;
         min-width: 0;
         overflow: hidden;
+        background-color: $fp-graphite;
 
         &::after {
             content: "";
@@ -186,12 +191,29 @@
         text-align: right;
     }
 
+    // Accesibilidad
     a:focus-visible {
         outline: 2px solid $fp-white;
         outline-offset: 5px;
     }
 }
 
+// Desktop
+@include media-breakpoint-up(lg) {
+    .fp-hero__image {
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        object-fit: cover;
+        object-position: center 45%;
+        transform: none;
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+}
+
+// Móvil y tablet
 @include media-breakpoint-down(lg) {
     .fp-hero {
         grid-template-columns: minmax(0, 1fr);
@@ -243,7 +265,6 @@
         }
 
         &__visual {
-            height: auto;
             min-height: 0;
 
             &::after {
@@ -275,10 +296,10 @@
     }
 }
 
+// Movimiento reducido
 @media (prefers-reduced-motion: reduce) {
     .fp-hero *,
     .fp-hero *::after {
         transition: none !important;
     }
 }
-//-HeroFrame.jsx-///
