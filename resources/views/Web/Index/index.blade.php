@@ -26,7 +26,7 @@
     <meta property="og:url" content="https://fp-webdesigns.com/">
     <meta property="og:locale" content="{{ $isSpanish ? 'es_US' : 'en_US' }}">
 
-    <meta property="og:image" content="{{ asset('img/og-v2.png') }}">
+    <meta property="og:image" content="{{ asset('img/og-v3.png') }}">
     <meta property="og:image:width" content="1731">
     <meta property="og:image:height" content="909">
 
