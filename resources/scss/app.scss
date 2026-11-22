@@ -8,6 +8,12 @@
 @import "index.scss";
 @import "select_lang.scss";
 
+html,
+body {
+    margin: 0;
+    background-color: $fp-graphite;
+}
+
 #header {
     position: sticky;
     top: 0;
