@@ -5,8 +5,13 @@
 @import "custom.scss";
 @import "header.scss";
 @import "footer.scss";
+@import "divider.scss";
 @import "index.scss";
 @import "select_lang.scss";
+@import "about_frame.scss";
+@import "situations_frame.scss";
+@import "projects_frame.scss";
+@import "services_frame.scss";
 
 html,
 body {
@@ -21,4 +26,8 @@ body {
     position: sticky;
     top: 0;
     z-index: 1030;
+}
+
+.anchor {
+    scroll-margin-top: 0;
 }

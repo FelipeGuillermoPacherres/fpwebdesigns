@@ -2,6 +2,8 @@ import React from "react";
 import FrameIMG from "../../../../public/img/frame-pic.jpg";
 
 export default function HeroFrame({ url, lang = "es" }) {
+
+    console.log(lang);
     const frameText = {
         es: {
             eyebrow: "DISEÑO & DESARROLLO WEB A MEDIDA",

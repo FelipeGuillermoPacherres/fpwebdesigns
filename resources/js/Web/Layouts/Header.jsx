@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import logo from "../../../../public/img/fp-web-designs-logo-white.svg"
+import SelectLang from "../../Components/SelectLang.jsx";
 
 export default function Header({ url = '', lang = 'es' }) {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -218,6 +219,7 @@ export default function Header({ url = '', lang = 'es' }) {
                     </div>
                 </div>
             )}
+            <SelectLang lang={lang} />
         </>
     );
 }

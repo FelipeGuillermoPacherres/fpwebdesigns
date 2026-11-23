@@ -1,0 +1,247 @@
+.fp-about {
+    // Espaciado común de los frames:
+    // Desktop: 2rem vertical y 3rem horizontal.
+    // Móvil: 1.5rem en todos los lados.
+    padding: 2rem 3rem;
+    color: #f2f7fc;
+    background-color: #0b0f14;
+
+    &__container {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        grid-template-areas:
+            "portrait header"
+            "portrait content";
+        align-content: center;
+        column-gap: clamp(2rem, 4vw, 4rem);
+        width: 100%;
+        max-width: 90rem;
+        margin-inline: auto;
+
+        > * {
+            min-width: 0;
+        }
+    }
+
+    &__header {
+        grid-area: header;
+        align-self: end;
+    }
+
+    &__portrait {
+        grid-area: portrait;
+        align-self: center;
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        width: 100%;
+        max-width: 34rem;
+        aspect-ratio: 3 / 4;
+        margin: 0;
+        border: 1px solid rgba(167, 180, 194, 0.15);
+        border-radius: 1.25rem;
+        background-color: #19222d;
+
+        &::after {
+            position: absolute;
+            z-index: 1;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(11, 15, 20, 0.95) 0%,
+                rgba(11, 15, 20, 0.35) 18%,
+                transparent 40%
+            );
+            content: "";
+            pointer-events: none;
+        }
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+    }
+
+    &__caption {
+        position: absolute;
+        z-index: 2;
+        right: 2rem;
+        bottom: 2rem;
+        left: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+
+    &__name {
+        color: #00c8f8;
+        font-family: monospace;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+    }
+
+    &__role {
+        color: #f2f7fc;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    &__eyebrow {
+        margin: 0 0 1.5rem;
+        color: #00c8f8;
+        font-family: monospace;
+        font-size: 0.75rem;
+        line-height: 1.6;
+        letter-spacing: 0.14em;
+    }
+
+    &__title {
+        margin: 0 0 1.75rem;
+        color: #f2f7fc;
+        font-size: clamp(2.5rem, 4vw, 4.5rem);
+        font-weight: 700;
+        line-height: 1.08;
+        letter-spacing: -0.04em;
+
+        span {
+            display: block;
+            margin-top: 0.15em;
+            color: #00c8f8;
+        }
+    }
+
+    &__content {
+        grid-area: content;
+        align-self: start;
+    }
+
+    &__introduction {
+        max-width: 38rem;
+        margin: 0 0 1.5rem;
+        color: #f2f7fc;
+        font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+        font-weight: 500;
+        line-height: 1.7;
+    }
+
+    &__description {
+        max-width: 38rem;
+        color: #a7b4c2;
+        font-size: 1rem;
+        line-height: 1.8;
+
+        p {
+            margin: 0 0 1rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &__signature {
+        margin: 1.75rem 0;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(167, 180, 194, 0.16);
+        color: #f2f7fc;
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.6;
+    }
+
+    &__contact {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        min-height: 3.5rem;
+        padding: 0.9rem 1.5rem;
+        border: 1px solid #00c8f8;
+        background-color: #00c8f8;
+        color: #0b0f14;
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.5;
+        text-align: center;
+        text-decoration: none;
+        transition:
+            background-color 0.2s ease,
+            color 0.2s ease;
+
+        i {
+            flex-shrink: 0;
+            font-size: 0.95rem;
+        }
+
+        &:hover {
+            background-color: transparent;
+            color: #00c8f8;
+        }
+
+        &:focus-visible {
+            outline: 2px solid #f2f7fc;
+            outline-offset: 4px;
+        }
+    }
+
+    @media (max-width: 991.98px) {
+        padding: 1.5rem;
+
+        &__container {
+            // Móvil: título, imagen y contenido.
+            grid-template-columns: minmax(0, 1fr);
+            grid-template-areas:
+                "header"
+                "portrait"
+                "content";
+            gap: 2rem;
+        }
+
+        &__header {
+            align-self: auto;
+        }
+
+        &__portrait {
+            max-width: 30rem;
+            margin-inline: auto;
+        }
+
+        &__caption {
+            right: 1.5rem;
+            bottom: 1.5rem;
+            left: 1.5rem;
+        }
+
+        &__eyebrow {
+            margin-bottom: 1.25rem;
+            font-size: 0.7rem;
+        }
+
+        &__title {
+            margin-bottom: 0;
+            font-size: clamp(2.25rem, 7vw, 3.5rem);
+        }
+
+        &__introduction {
+            font-size: 1.1rem;
+        }
+
+        &__description {
+            font-size: 1rem;
+        }
+
+        &__signature {
+            margin-block: 1.5rem;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        &__contact {
+            transition: none;
+        }
+    }
+}

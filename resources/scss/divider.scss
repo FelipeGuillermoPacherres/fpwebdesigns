@@ -1,0 +1,38 @@
+.fp-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    width: min(100%, 30rem);
+    margin-inline: auto;
+    padding: 2rem 1.5rem;
+    color: $fp-cyan;
+
+    &::before,
+    &::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+    }
+
+    &::before {
+        background: linear-gradient(
+            to right,
+            transparent,
+            $fp-cyan
+        );
+    }
+
+    &::after {
+        background: linear-gradient(
+            to left,
+            transparent,
+            $fp-cyan
+        );
+    }
+
+    i {
+        flex-shrink: 0;
+        font-size: 1.75rem;
+    }
+}
